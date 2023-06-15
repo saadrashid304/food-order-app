@@ -18,7 +18,7 @@ const MealItem = (props) => {
   };
 
   return (
-    <li className={classes.meal} key={props.key}>
+    <li className={classes.meal} key={Math.random()}>
       <div>
         <h3>{props.name}</h3>
         <div className={classes.description}>{props.description}</div>

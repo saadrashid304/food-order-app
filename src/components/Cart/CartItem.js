@@ -4,7 +4,7 @@ const CartItem = (props) => {
   const price = `$${props.price.toFixed(2)}`;
 
   return (
-    <li className={classes["cart-item"]} key={props.key}>
+    <li className={classes["cart-item"]} key={Math.random()}>
       <div>
         <h2>{props.name}</h2>
         <div className={classes.summary}>
