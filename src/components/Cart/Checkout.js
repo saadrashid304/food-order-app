@@ -43,31 +43,53 @@ const Checkout = (props) => {
     if (!formIsValid) {
       return;
     }
+
+    const userData = {
+      name: name,
+      street: street,
+      postalCode: postalCode,
+      city: city,
+    };
+
+    props.onSubmitOrder(userData);
   };
+
+  const nameControlClasses = `${classes.control} ${
+    formInputsValidity.nameValid ? "" : classes.invalid
+  }`;
+  const streetControlClasses = `${classes.control} ${
+    formInputsValidity.streetValid ? "" : classes.invalid
+  }`;
+  const postalCodeControlClasses = `${classes.control} ${
+    formInputsValidity.postalCodeValid ? "" : classes.invalid
+  }`;
+  const cityControlClasses = `${classes.control} ${
+    formInputsValidity.cityValid ? "" : classes.invalid
+  }`;
 
   return (
     <form className={classes.form} onSubmit={confirmHandler}>
       <div className={classes.field_container}>
-        <div className={classes.control}>
+        <div className={nameControlClasses}>
           <label htmlFor="name">Your Name</label>
           <input type="text" id="name" ref={nameRef} />
           {!formInputsValidity.nameValid && <p>Please enter a valid name!</p>}
         </div>
-        <div className={classes.control}>
+        <div className={streetControlClasses}>
           <label htmlFor="street">Street</label>
           <input type="text" id="street" ref={streetRef} />
           {!formInputsValidity.streetValid && (
             <p>Please enter a valid street!</p>
           )}
         </div>
-        <div className={classes.control}>
+        <div className={postalCodeControlClasses}>
           <label htmlFor="postal">Postal Code</label>
           <input type="text" id="postal" ref={postalCodeRef} />
           {!formInputsValidity.postalCodeValid && (
             <p>Please enter a valid postal code!</p>
           )}
         </div>
-        <div className={classes.control}>
+        <div className={cityControlClasses}>
           <label htmlFor="city">City</label>
           <input type="text" id="city" ref={cityRef} />
           {!formInputsValidity.cityValid && <p>Please enter a valid city!</p>}
